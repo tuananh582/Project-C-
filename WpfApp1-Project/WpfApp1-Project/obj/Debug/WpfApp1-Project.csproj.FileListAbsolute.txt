@@ -1,0 +1,15 @@
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project.csproj.AssemblyReference.cache
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\MainWindow.g.cs
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\App.g.cs
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project_MarkupCompile.cache
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project_MarkupCompile.lref
+G:\doan\WpfApp1-Project\WpfApp1-Project\bin\Debug\WpfApp1-Project.exe.config
+G:\doan\WpfApp1-Project\WpfApp1-Project\bin\Debug\WpfApp1-Project.exe
+G:\doan\WpfApp1-Project\WpfApp1-Project\bin\Debug\WpfApp1-Project.pdb
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\MainWindow.baml
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project.g.resources
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1_Project.Properties.Resources.resources
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project.csproj.GenerateResource.cache
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project.csproj.CoreCompileInputs.cache
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project.exe
+G:\doan\WpfApp1-Project\WpfApp1-Project\obj\Debug\WpfApp1-Project.pdb
