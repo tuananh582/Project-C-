@@ -47,19 +47,6 @@ namespace WpfApp1_Project
 
         private async void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            //employees.Add(new Employee()
-            //{
-            //    Id = txtId.Text,
-            //    Name = txtName.Text,
-            //    Age = int.Parse(txtAge.Text),
-            //    Salary = decimal.Parse(txtSalary.Text),
-            //    BonusSalary = decimal.Parse(txtBonus.Text),
-            //    Department = txtDepartment.Text,
-            //    City = txtCity.Text
-            //});
-
-            //// Clear input fields after adding an employee
-            //ClearInputFields();
             try
             {
                 // Add employee to MongoDB with auto-generated ObjectId
@@ -107,10 +94,7 @@ namespace WpfApp1_Project
 
         private async  void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            //if (listViewEmployees.SelectedIndex != -1)
-            //{
-            //    employees.RemoveAt(listViewEmployees.SelectedIndex);
-            //}
+            
             try
             {
                 if (listViewEmployees.SelectedIndex != -1)
@@ -136,6 +120,73 @@ namespace WpfApp1_Project
             txtBonus.Text = "";
             txtDepartment.Text = "";
             txtCity.Text = "";
+        }
+
+        private async void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string searchName = txtSearchName.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchName))
+            {
+                try
+                {
+                    var filter = Builders<Employee>.Filter.Where(emp => emp.Name.ToLower().Contains(searchName.ToLower()));
+                    var filteredEmployees = await employeeCollection.Find(filter).ToListAsync();
+
+                    if (filteredEmployees.Count > 0)
+                    {
+                        listViewEmployees.ItemsSource = filteredEmployees;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No employees found in DataBase "); // Wrote by Tuan Anh
+                       
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error searching for employees: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please enter a name to search.");
+            }
+        }
+
+        private async void btnShowAllSalaries_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var projection = Builders<Employee>.Projection.Include(emp => emp.Name)
+                                                              .Include(emp => emp.Salary)
+                                                              .Include(emp => emp.BonusSalary);
+
+                var allSalaries = await employeeCollection.Find(new BsonDocument())
+                                                          .Project<Employee>(projection)
+                                                          .ToListAsync();
+
+                if (allSalaries.Count > 0)
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("Employee Salaries and Bonus:");
+
+                    foreach (var emp in allSalaries)
+                    {
+                        sb.AppendLine($"Name: {emp.Name}, Salary: {emp.Salary}, Bonus: {emp.BonusSalary}");
+                    }
+
+                    MessageBox.Show(sb.ToString());
+                }
+                else
+                {
+                    MessageBox.Show("No employees found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error retrieving salaries: " + ex.Message);
+            }
         }
     }
     public class Employee

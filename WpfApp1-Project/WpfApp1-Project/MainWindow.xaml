@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1_Project"
         mc:Ignorable="d"
-        Title="Employee Manager" Height="450" Width="800">
+        Title="Employee Manager Made By Tuan Anh and Group 6" Height="450" Width="800">
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="10">
+        <TextBlock Text="Employee Manager" TextAlignment="Center" FontSize="20" />
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="20">
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
                 <TextBlock Text="Name" Margin="5" VerticalAlignment="Center"/>
                 <TextBox x:Name="txtName" Width="150" Margin="5" Text=""/>
@@ -41,13 +43,26 @@
                 <Button x:Name="btnAddEmployee" Content="Add Employee" Width="120" Margin="5" Click="btnAddEmployee_Click"/>
                 <Button x:Name="btnShowAll" Content="Show All Employee" Width="150" Margin="5" Click="btnShowAll_Click"/>
                 <Button x:Name="btnDelete" Content="Delete Employee" Width="150 " Margin="5" Click="btnDelete_Click"/>
+                <Button x:Name="btnShowAllSalaries" Content="Show All Salaries" Width="150" Margin="5" Click="btnShowAllSalaries_Click"/>
+                <Button />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <TextBlock Text="Search By Name:" Margin="5" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtSearchName" Width="150" Margin="5" Text=""/>
+                <Button x:Name="btnSearch" Content="Search" Width="80" Margin="5" Click="btnSearch_Click"/>
+
             </StackPanel>
         </StackPanel>
+     
         <ListView x:Name="listViewEmployees" Grid.Row="1" Margin="10">
-            <ListView.View>
+            <ListView.View >
                 <GridView>
-                  
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="{x:Type GridViewColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Name"   DisplayMemberBinding="{Binding Name}"/>
                     <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}"/>
                     <GridViewColumn Header="Salary" DisplayMemberBinding="{Binding Salary}"/>
                     <GridViewColumn Header="Bonus Salary" DisplayMemberBinding="{Binding BonusSalary}"/>
